@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using dotnetcore_api.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace dotnetcore_api
 {
@@ -23,6 +25,8 @@ namespace dotnetcore_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
+            services.AddScoped<DataContext, DataContext>();
 
             services.AddCors();
             services.AddControllers();

@@ -11,6 +11,7 @@ using dotnetcore_api.Services;
 
 namespace dotnetcore_api.Controllers
 {
+    [Route("v1/account")]
     public class UserController : Controller
     {
         [HttpPost]
